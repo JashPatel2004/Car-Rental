@@ -2,6 +2,8 @@ package com.jash.car_rental.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class User {
 
@@ -10,8 +12,8 @@ public class User {
     private int id;
 
 
-    @OneToOne(mappedBy = "user",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    private BookCar bookCar;
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    private List<Car> cars;
 
     private String firstName;
     private String lastName;

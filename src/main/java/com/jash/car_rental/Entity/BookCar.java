@@ -1,5 +1,6 @@
 package com.jash.car_rental.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -11,10 +12,11 @@ public class BookCar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
-    @OneToOne
+    @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
     private int days;

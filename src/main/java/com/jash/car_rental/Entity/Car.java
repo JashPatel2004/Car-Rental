@@ -1,5 +1,6 @@
 package com.jash.car_rental.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Arrays;
@@ -12,8 +13,10 @@ public class Car {
     private int id;
 
 
-    @OneToOne(mappedBy = "car",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    private BookCar bookCar;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
     private byte[] image;
     private String manufacturer;
